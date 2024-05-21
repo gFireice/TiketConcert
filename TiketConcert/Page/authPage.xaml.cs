@@ -44,12 +44,14 @@ namespace TiketConcert.Page
         {
             if (string.IsNullOrWhiteSpace(LoginBox.Text))
             {
-                MessageBox.Show("Поле \"Login\" не может быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Поле \"Login\" не может быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErroText.Text = "Пустой Логин";
                 return;
             }
             if (string.IsNullOrWhiteSpace(PassBox.Text))
             {
-                MessageBox.Show("Поле \"Password\" не может быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Поле \"Password\" не может быть пустым", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErroText.Text = "Пустой Пароль";
                 return;
             }
 
@@ -60,7 +62,7 @@ namespace TiketConcert.Page
             AuthUser authUser = new AuthUser();
             
             authUser = await AppData.Context.Authorization(authUserNow);
-
+            
             if (authUser.error == null)
             {
                 switch (authUser.IDPosition)
@@ -69,7 +71,8 @@ namespace TiketConcert.Page
                         TempData.UserToken = authUser.token;
                         TempData.IdUser=authUser.IdUser;
                         TempData.IdPosition=authUser.IDPosition;
-                        MessageBox.Show(TempData.IdUser);
+                        //MessageBox.Show(TempData.IdUser);
+                        NavigationService.Navigate(new Page.TiketView());
                         break;
                     default:
                         break;
@@ -77,31 +80,34 @@ namespace TiketConcert.Page
             }
             else
             {
-                MessageBox.Show(authUser.error, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show(authUser?.error ?? "Неизвестная ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErroText.Text = authUser.error;
             }
-             }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private bool IsValidPhoneNumber(string phone)
-        {
-            return phone.All(char.IsDigit) && phone.Length >= 10 && phone.Length <= 15;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Auth();
         }
+
+        //private bool IsValidEmail(string email)
+        //{
+        //    try
+        //    {
+        //        var addr = new System.Net.Mail.MailAddress(email);
+        //        return addr.Address == email;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //private bool IsValidPhoneNumber(string phone)
+        //{
+        //    return phone.All(char.IsDigit) && phone.Length >= 10 && phone.Length <= 15;
+        //}
+
+
     }
 }

@@ -34,3 +34,5 @@ C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\Sys
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\TiketCon.5A5CCFFB.Up2Date
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\TiketView.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\TiketView.baml

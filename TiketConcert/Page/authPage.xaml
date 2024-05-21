@@ -56,15 +56,26 @@
                         <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
                     </TextBox.Effect>
                 </TextBox>
-                <Button   Width="187"
-                          Height="50"
-                          Style="{DynamicResource ButtonEntry}"
-                          Grid.Row="3"
-                          Content="Вход" Click="Button_Click">
-                    <Button.Effect>
-                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
-                    </Button.Effect>
-                </Button>
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Grid.Row="3">
+                    <TextBlock x:Name="ErroText"
+                               Text=""
+                               Foreground="Red"
+                               FontSize="10"
+                               ></TextBlock>
+                    <Button   
+                    Width="187"
+                    Height="50"
+                    Style="{DynamicResource ButtonEntry}"
+                    Content="Вход"
+                    Click="Button_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+              
                 
             </Grid>
            

@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Page\TiketView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,11 +96,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Class\AppData.cs" />
-    <Compile Include="Class\PageControler.cs" />
     <Compile Include="Class\TempData.cs" />
     <Compile Include="Model\AuthUser.cs" />
     <Compile Include="Model\AuthUserNow.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Page\TiketView.xaml.cs">
+      <DependentUpon>TiketView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -136,6 +142,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="image\LogoMain.png" />
+    <Resource Include="image\LogoSecond.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

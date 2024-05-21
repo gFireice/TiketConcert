@@ -31,6 +31,13 @@ namespace TiketConcert.Api
             {
                 authUser = await response.Content.ReadAsAsync<AuthUser>();
             }
+            else
+            {
+                authUser = await response.Content.ReadAsAsync<AuthUser>();
+                // Обработка ошибки
+                //string error = await response.Content.ReadAsStringAsync();
+                //return new AuthUser { error = error };
+            }
             return authUser;
         }
     }
