@@ -16,6 +16,9 @@ namespace TiketConcert.Model
 
         public string IDPosition { get; set; }
 
+        public string FirstName { get; set; }
+        
+        public string LastName { get; set; }
 
     }
 }

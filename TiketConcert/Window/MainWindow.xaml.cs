@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TiketConcert.Class;
 
 namespace TiketConcert
 {
@@ -23,6 +24,19 @@ namespace TiketConcert
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                AppData.updateContext();
+                AppData.Context.RunAsync().GetAwaiter().GetResult();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка соединения с сервером!" +
+                    "\nПожалуйста, запустите сервер заново запустите приложение!",
+                    "Ошибка", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
             MaimFrame.Content=new Page.authPage();
         }
     }

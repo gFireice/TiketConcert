@@ -25,19 +25,7 @@ namespace TiketConcert.Page
         public authPage()
         {
             InitializeComponent();
-            try
-            {
-                AppData.updateContext();
-                AppData.Context.RunAsync().GetAwaiter().GetResult();
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка соединения с сервером!" +
-                    "\nПожалуйста, запустите сервер заново запустите приложение!",
-                    "Ошибка", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-                Application.Current.Shutdown();
-            }
+           
         }
 
         private async void Auth()
@@ -71,6 +59,8 @@ namespace TiketConcert.Page
                         TempData.UserToken = authUser.token;
                         TempData.IdUser=authUser.IdUser;
                         TempData.IdPosition=authUser.IDPosition;
+                        TempData.FirstName =authUser.FirstName;
+                        TempData.LastName =authUser.LastName;
                         //MessageBox.Show(TempData.IdUser);
                         NavigationService.Navigate(new Page.TiketView());
                         break;
@@ -88,6 +78,11 @@ namespace TiketConcert.Page
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Auth();
+        }
+
+        private void PageReg_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Page.registPage());
         }
 
         //private bool IsValidEmail(string email)

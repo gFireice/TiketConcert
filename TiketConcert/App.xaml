@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TiketConcert"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="Window/MainWindow.xaml">
+             StartupUri="Window/MainWindow.xaml"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
+
+
 
         <Style x:Key="ButtonEntry" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -53,8 +56,148 @@
         </Style>
 
 
+        <Style x:Key="ButtonSplash" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#FFFF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"  BorderBrush="Black" BorderThickness="0 0 0 1"  CornerRadius="0" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Триггеры цвета фона -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
+                                <Setter TargetName="border" Property="Background" Value="#c0c0c0"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#808080"/>
+                            </Trigger>
+
+                            <!-- Анимация цвета фона при нажатии -->
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                     To="#808080" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                             To="#f0f0f0" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonSplashEx" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#FFFF"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"  BorderBrush="Black" BorderThickness="0 1 0 0"  CornerRadius="0" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Триггеры цвета фона -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#f0f0f0"/>
+                                <Setter TargetName="border" Property="Background" Value="#c0c0c0"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#808080"/>
+                            </Trigger>
+
+                            <!-- Анимация цвета фона при нажатии -->
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+             To="#808080" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                     To="#f0f0f0" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonBuy" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="#FF0213"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" CornerRadius="0" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Image Width="20" Height="20" Source="/image/basket.png" />
+                                    <ContentPresenter Margin="2 0 0 0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF0213"/>
+                                <Setter TargetName="border" Property="Background" Value="#9A040F"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF0213"/>
+                                <Setter TargetName="border" Property="Background" Value="#7D070F"/>
+                            </Trigger>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                To="#D32F2F" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                To="#EF9A9A" Duration="0:0:0.020"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
         <!--//__________________________________________________________________-->
-        
+
+
         
         <Style x:Key="TextBoxStyleWithWatermark" TargetType="TextBox">
             
@@ -96,6 +239,13 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="DemoLinkLabel" TargetType="Label">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="DarkOrange" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
     </Application.Resources>

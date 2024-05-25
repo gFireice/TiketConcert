@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using TiketConcert.Model;
+using TiketConcert.Class;
 
 
 namespace TiketConcert.Api
@@ -23,6 +24,7 @@ namespace TiketConcert.Api
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+
         public async Task<AuthUser> Authorization(AuthUserNow user)
         {
             AuthUser authUser = null;
@@ -34,11 +36,33 @@ namespace TiketConcert.Api
             else
             {
                 authUser = await response.Content.ReadAsAsync<AuthUser>();
-                // Обработка ошибки
-                //string error = await response.Content.ReadAsStringAsync();
-                //return new AuthUser { error = error };
             }
             return authUser;
+        }
+
+        public async Task<List<Concert>> GetAllConcrt()
+        {
+            List<Concert> concert = null;
+            HttpResponseMessage response = await client.GetAsync($"concert");
+            concert = await response.Content.ReadAsAsync<List<Concert>>();
+
+            return concert;
+        }
+
+        public byte[] GetImage(string path)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    byte[] data = webClient.DownloadData($"http://95.165.143.19:8085/api/uploads/{path}");
+                    return data;
+                }
+                catch (WebException)
+                {
+                    return new byte[0];
+                }
+            }
         }
     }
 }

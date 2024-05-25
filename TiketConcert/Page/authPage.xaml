@@ -9,10 +9,10 @@
       d:DesignHeight="579" d:DesignWidth="1015"
       Title="authPage">
 
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="615"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -59,7 +59,7 @@
                 <StackPanel VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Grid.Row="3">
-                    <TextBlock x:Name="ErroText"
+                    <TextBlock Margin="5 0 0 0" x:Name="ErroText"
                                Text=""
                                Foreground="Red"
                                FontSize="10"
@@ -74,6 +74,12 @@
                             <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
                         </Button.Effect>
                     </Button>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Hyperlink x:Name="PageReg" Click="PageReg_Click">
+                            <Label Content="Регитрация"
+                   Style="{StaticResource DemoLinkLabel}"/>
+                        </Hyperlink>
+                    </Label>
                 </StackPanel>
               
                 

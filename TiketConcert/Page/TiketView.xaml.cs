@@ -13,6 +13,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TiketConcert.Class;
+using TiketConcert.Model;
+
 
 namespace TiketConcert.Page
 {
@@ -24,13 +26,33 @@ namespace TiketConcert.Page
         public TiketView()
         {
             InitializeComponent();
+            NavigationFrame.Content=new Page.ListPosterPage();
+            UserNameBlock.Text = $"{TempData.FirstName} {TempData.LastName}";
+            NavigateComtrol.MainFrame = this.NavigationFrame;
         }
 
         private void TextAccount_Click(object sender, RoutedEventArgs e)
         {
-            // Запуск анимации
-            //Storyboard storyboard = (Storyboard)this.Resources["ShowAccStoryboard"];
-            //storyboard.Begin();
+            ScaleTransform scaleTransform = acc.RenderTransform as ScaleTransform;
+            if (scaleTransform.ScaleX == 0)
+            {
+        
+                Storyboard storyboard = (Storyboard)this.Resources["ShowAccStoryboardRightToLeft"];
+                storyboard.Begin();
+            }
+            else
+            {
+
+                Storyboard storyboard = (Storyboard)this.Resources["ShowAccStoryboardLeftToRight"];
+                storyboard.Begin();
+
+            }
+        }
+
+        private void ButtonExith_Click(object sender, RoutedEventArgs e)
+        {
+            TempData.UserToken = null;
+            NavigationService.Navigate(new Page.authPage());
         }
     }
 }

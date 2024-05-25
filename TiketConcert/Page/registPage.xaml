@@ -1,0 +1,153 @@
+﻿<Page x:Class="TiketConcert.Page.registPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TiketConcert.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="579" d:DesignWidth="1015"
+      
+      Title="registPage">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="615"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="530"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.Row="1" Background="#EDF2F4" CornerRadius="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="300*"/>
+            
+                </Grid.RowDefinitions>
+                <TextBlock Text="Регитсрация"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 FontSize="25"
+                 TextWrapping="Wrap"/>
+                <StackPanel VerticalAlignment="Stretch"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1">
+                   
+                <TextBox x:Name="LoginBox" Style="{DynamicResource TextBoxStyleWithWatermark}"
+                     Margin="0 20 0 0"
+                     Width="187"
+                     Height="50"
+                     Grid.Row="1"
+                     Tag="Логин"
+                    
+                     SelectionTextBrush="Black">
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+                <TextBox x:Name="FirstNameBox" Style="{DynamicResource TextBoxStyleWithWatermark}"
+                     Margin="0 10 0 0"
+                     Width="187"
+                     Height="50"
+                     Grid.Row="2"
+                     Tag="Имя"
+                    
+                     SelectionTextBrush="Black">
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect>
+                </TextBox>
+                
+                <TextBox x:Name="LastNameBox" Style="{DynamicResource TextBoxStyleWithWatermark}"
+                     Margin="0 10 0 0"
+                     Width="187"
+                     Height="50"
+                     Grid.Row="3"
+                     Tag="Фамилия"
+                    
+                     SelectionTextBrush="Black">
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect>
+                </TextBox>
+                    <StackPanel
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal"
+                        Margin="0 10 0 0">
+                <ComboBox x:Name="GenderBox"
+                    
+                     Width="50"
+                     Height="30"
+                     Tag="Пол">
+                    <ComboBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </ComboBox.Effect>
+                  </ComboBox >
+                        <DatePicker Margin="10 0 0 0"
+                        Width="50"
+                        Height="30">
+                        </DatePicker>
+                    </StackPanel>
+
+                    <TextBox x:Name="PassBox" Style="{DynamicResource TextBoxStyleWithWatermark}"
+                     Margin="0 10 0 0"
+                     Width="187"
+                     Height="50"
+                     Grid.Row="7"
+                     Tag="Пароль"
+                    
+                     SelectionTextBrush="Black">
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect>
+                </TextBox>
+                <TextBox x:Name="PassBoxTwo" Style="{DynamicResource TextBoxStyleWithWatermark}"
+                  Margin="0 20 0 0"
+                  Width="187"
+                  Height="50"
+                  Grid.Row="8"
+                  Tag="Пароль повторно"
+     
+                    SelectionTextBrush="Black">
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect>
+
+                </TextBox>
+                    <StackPanel  Margin="0 20 0 0">
+                        <TextBlock Margin="5 0 0 0" x:Name="ErroText"
+                           Text=""
+                           Foreground="Red"
+                           FontSize="10"
+                           ></TextBlock>
+                    <Button   
+                Width="187"
+                Height="50"
+                Style="{DynamicResource ButtonEntry}"
+                Content="Вход">
+                    <Button.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </Button.Effect>
+                    </Button>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Hyperlink x:Name="PageAuth" Click="PageAuth_Click">
+                                <Label FontSize="10" Content="Вход"
+                                Style="{StaticResource DemoLinkLabel}"/>
+                            </Hyperlink>
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+            </Border.Effect>
+        </Border>
+    </Grid>
+</Page>
