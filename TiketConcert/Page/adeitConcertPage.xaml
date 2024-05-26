@@ -1,0 +1,78 @@
+﻿<Page x:Class="TiketConcert.Page.adeitConcertPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TiketConcert.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="579" d:DesignWidth="1015"
+      Title="adeitConcertPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border  x:Name="imageConcert"
+                Margin="10"
+                CornerRadius="0" >
+                <Border.Background>
+                    <ImageBrush  x:Name="imageBorder" Stretch="UniformToFill" ImageSource="/image/noImage.jpg"/>
+                </Border.Background>
+            </Border>
+            <StackPanel HorizontalAlignment="Left" Grid.Column="1">
+                
+                <TextBox Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Название" Width="auto" x:Name="TitleTxt" FontSize="24">
+                </TextBox>
+                <WrapPanel>
+                    <TextBlock Text="Цена:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <TextBox Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Цена" Width="auto" x:Name="CostTxt" FontSize="16"></TextBox>
+                    <TextBlock Text="р" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                </WrapPanel>
+                
+
+            </StackPanel>
+        </Grid>
+        <Border Grid.Row="1"
+                Width="auto"
+                
+                Height="auto"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Background="LightGray"
+                CornerRadius="0"
+                Margin="10 10 0 0">
+            <TextBox Style="{DynamicResource TextBoxStyleNullBack}"  Tag="Описание" FontSize="16" TextWrapping="Wrap"
+                x:Name="DescriptionTxt"
+                       Margin="5"
+                       Text=""></TextBox>
+        </Border>
+        <Label Grid.Row="1"
+                Width="55"
+                Height="35"
+                Margin="10"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                >
+            <Hyperlink Click="Hyperlink_Click">
+                <Label Content="Выход"
+                Style="{StaticResource DemoLinkLabel}"/>
+            </Hyperlink>
+            <!--<Label.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="/image/back.png"/>
+            </Label.Background>-->
+        </Label>
+        <Button 
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Margin="5"
+            Grid.Row="1"
+            Style="{DynamicResource ButtonAdmin}"
+            Content="Готово  " Width="auto" Height="30"></Button>
+    </Grid>
+</Page>

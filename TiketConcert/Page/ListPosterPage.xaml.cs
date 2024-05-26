@@ -42,14 +42,22 @@ namespace TiketConcert.Page
 
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            //if (sender is Grid grid)
+            //{
+            //    if (grid.DataContext is Concert concert)
+            //    {
+
+            //        NavigateComtrol.MainFrame.Navigate(new Page.shopConcertPage(concert));
+            //    }
+            //}
             if (sender is Grid grid)
             {
                 if (grid.DataContext is Concert concert)
                 {
-   
-                    NavigateComtrol.MainFrame.Navigate(new Page.shopConcertPage(concert));
+                    NavigateComtrol.ViewFrame.Navigate(new Page.shopConcertPage(concert));
                 }
             }
+
         }
     }
 }

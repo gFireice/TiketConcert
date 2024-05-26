@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:TiketConcert.Page"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="shopConcertPage" >
+      Title="shopConcertPage" Background="White">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -53,5 +53,21 @@
                        Margin="5 5 0 0"
                        Text=""></TextBlock>
         </Border>
+        <Label Grid.Row="1"
+                Width="55"
+                Height="35"
+                Margin="10"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                >
+            <Hyperlink Click="Hyperlink_Click">
+                <Label Content="Выход"
+                Style="{StaticResource DemoLinkLabel}"/>
+            </Hyperlink>
+            <!--<Label.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="/image/back.png"/>
+            </Label.Background>-->
+        </Label>
+        
     </Grid>
 </Page>

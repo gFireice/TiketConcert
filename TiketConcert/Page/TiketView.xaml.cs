@@ -29,6 +29,7 @@ namespace TiketConcert.Page
             NavigationFrame.Content=new Page.ListPosterPage();
             UserNameBlock.Text = $"{TempData.FirstName} {TempData.LastName}";
             NavigateComtrol.MainFrame = this.NavigationFrame;
+            NavigateComtrol.ViewFrame = this.ViewFrame;
         }
 
         private void TextAccount_Click(object sender, RoutedEventArgs e)
@@ -53,6 +54,16 @@ namespace TiketConcert.Page
         {
             TempData.UserToken = null;
             NavigationService.Navigate(new Page.authPage());
+        }
+
+        private void ButtonHistory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Paket_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateComtrol.ViewFrame.Navigate(new Page.BasketPage());
         }
     }
 }

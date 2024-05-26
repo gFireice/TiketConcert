@@ -40,6 +40,7 @@
             </Border>
             <Grid Grid.Row="1">
                 <Frame x:Name="NavigationFrame" Grid.Row="1"/>
+                <Frame x:Name="ViewFrame" Grid.Row="1"/>
             </Grid>
             
             
@@ -52,11 +53,14 @@
          MaxWidth="150"
          Grid.Row="0"
          Source="/image/LogoSecond.png"></Image>
-                <TextBox 
+                <TextBox Tag="Поиск"  Style="{DynamicResource TextBoxSearch}"
          Width="350"
-         Height="20"
+         Height="25"
          Margin="30 0 0 0"
-         ></TextBox>
+         >
+                    <TextBox.Effect>
+                        <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
+                    </TextBox.Effect></TextBox>
                 <Label  Margin="30 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Hyperlink x:Name="PageReg" Click="TextAccount_Click">
                         <Label Content="Аккаунт"
@@ -101,8 +105,8 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1">
                         <Button Height="35" x:Name="ButtonProfile" Content="Мой профиль" Style="{DynamicResource ButtonSplash}"></Button>
-                        <Button Height="35" x:Name="ButtonHistory" Content="История покупок" Style="{DynamicResource ButtonSplash}"></Button>
-                        <Button Height="35" x:Name="Paket" Content="Корзина" Style="{DynamicResource ButtonSplash}"></Button>
+                        <Button Height="35" x:Name="ButtonHistory" Content="История покупок" Style="{DynamicResource ButtonSplash}" Click="ButtonHistory_Click"></Button>
+                        <Button Height="35" x:Name="Paket" Content="Корзина" Style="{DynamicResource ButtonSplash}" Click="Paket_Click"></Button>
                     </StackPanel>
                     <StackPanel Grid.Row="2">
                         <Button Height="35" x:Name="ButtonExith" Content="Выход" Style="{DynamicResource ButtonSplashEx}" Click="ButtonExith_Click"></Button>

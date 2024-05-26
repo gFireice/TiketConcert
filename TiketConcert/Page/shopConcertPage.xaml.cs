@@ -26,17 +26,17 @@ namespace TiketConcert.Page
         public shopConcertPage(Concert concert)
         {
             InitializeComponent();
-            byte[] imageData = AppData.Context.GetImage(concert.Poster);// массив байт содержащий изображение
+            byte[] imageData = AppData.Context.GetImage(concert.Poster);
             if (imageData != null)
             {
-                BitmapImage bitmap = new BitmapImage();  // создание нового экземпляра BitmapImage
-                bitmap.BeginInit();  // начало инициализации BitmapImage
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
                 bitmap.CreateOptions = BitmapCreateOptions.None;
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.Rotation = Rotation.Rotate0;
-                bitmap.StreamSource = new MemoryStream(imageData); // загрузка изображения из массива байт
-                bitmap.EndInit(); // завершение инициализации BitmapImage
-                ImageSource imageSource = bitmap; // приведение BitmapImage к типу ImageSource
+                bitmap.StreamSource = new MemoryStream(imageData);
+                bitmap.EndInit(); 
+                ImageSource imageSource = bitmap;
                 imageBorder.ImageSource = imageSource;
             }
             
@@ -44,6 +44,11 @@ namespace TiketConcert.Page
             CostTxt.Text =$"Цена:{Convert.ToString(concert.Price)}р";
             TitleTxt.Text = concert.TitleConcert;
             
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateComtrol.ViewFrame.Navigate(null);
         }
     }
 }

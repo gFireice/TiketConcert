@@ -64,6 +64,15 @@ namespace TiketConcert.Page
                         //MessageBox.Show(TempData.IdUser);
                         NavigationService.Navigate(new Page.TiketView());
                         break;
+                    case "2":
+                        TempData.UserToken = authUser.token;
+                        TempData.IdUser = authUser.IdUser;
+                        TempData.IdPosition = authUser.IDPosition;
+                        TempData.FirstName = authUser.FirstName;
+                        TempData.LastName = authUser.LastName;
+                        //MessageBox.Show(TempData.IdUser);
+                        NavigationService.Navigate(new Page.adminPage());
+                        break;
                     default:
                         break;
                 }

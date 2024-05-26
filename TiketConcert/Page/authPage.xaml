@@ -74,6 +74,7 @@
                             <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
                         </Button.Effect>
                     </Button>
+                    
                     <Label HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Hyperlink x:Name="PageReg" Click="PageReg_Click">
                             <Label Content="Регитрация"

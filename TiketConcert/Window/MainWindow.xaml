@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TiketConcert"
         mc:Ignorable="d"
-        Title="MainWindow" Height="579" Width="1015"
+        Title="TiketConcert" Icon="/image/LogoMain.png" Height="579" Width="1015"
         MinHeight="579" MinWidth="1015">
     <Grid>
         <Frame 

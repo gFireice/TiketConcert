@@ -60,3 +60,16 @@ C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Pag
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\ListPosterPage.baml
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\shopConcertPage.g.cs
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\shopConcertPage.baml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\FontAwesome.WPF.dll
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\FontAwesome.WPF.xml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\WpfAnimatedGif.dll
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\bin\Debug\WpfAnimatedGif.xml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\BasketPage.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\BasketPage.baml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adminPage.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adminPage.baml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adeitConcertPage.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adminConcertPage.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adeitConcertPage.baml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\adminConcertPage.baml
