@@ -14,5 +14,10 @@ namespace TiketConcert.Class
         {
             Context = new Api.ApiControler();
         }
+
+        public static List<Model.Concert> basket { get; set; } = new List<Model.Concert>();
+
+        public static List<Model.Concert> concerts { get; set; } = new List<Model.Concert>();
+
     }
 }

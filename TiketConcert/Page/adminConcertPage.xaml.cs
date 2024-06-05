@@ -48,7 +48,7 @@ namespace TiketConcert.Page
             {
                 if (grid.DataContext is Concert concert)
                 {
-                    NavigateComtrol.ViewFrame.Navigate(new Page.adeitConcertPage(concert));
+                    NavigateComtrol.MainFrame.Navigate(new Page.adeitConcertPage(concert));
                 }
             }
 
@@ -56,7 +56,7 @@ namespace TiketConcert.Page
 
         private void addConcertButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateComtrol.ViewFrame.Navigate(new Page.adeitConcertPage());
+            NavigateComtrol.MainFrame.Navigate(new Page.adeitConcertPage());
         }
     }
 }

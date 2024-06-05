@@ -11,7 +11,7 @@ namespace TiketConcert.Class
     {
         public static Frame MainFrame { get; set; } = new Frame();
 
-        public static Frame ViewFrame { get; set; } = new Frame();
+        //public static Frame ViewFrame { get; set; } = new Frame();
 
         public static Frame EditFrame { get; set; } = new Frame();
     }

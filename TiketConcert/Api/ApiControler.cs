@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
+using System;
 using TiketConcert.Model;
+using Newtonsoft.Json;
+using System.Linq;
+using System.Windows.Controls;
 using TiketConcert.Class;
-
 
 namespace TiketConcert.Api
 {
@@ -23,7 +23,6 @@ namespace TiketConcert.Api
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
 
         public async Task<AuthUser> Authorization(AuthUserNow user)
         {
@@ -43,11 +42,13 @@ namespace TiketConcert.Api
         public async Task<List<Concert>> GetAllConcrt()
         {
             List<Concert> concert = null;
-            HttpResponseMessage response = await client.GetAsync($"concert");
+            HttpResponseMessage response = await client.GetAsync("concert");
             concert = await response.Content.ReadAsAsync<List<Concert>>();
 
             return concert;
         }
+
+
 
         public byte[] GetImage(string path)
         {
@@ -64,5 +65,38 @@ namespace TiketConcert.Api
                 }
             }
         }
+        public async Task<bool> CreateOrder( List<Concert> basket)
+        {
+
+            var tickets = AppData.basket
+            .GroupBy(item => item.IDConcert)
+            .Select(group => new TicketOrder
+             {
+             ticketId = group.Key,
+             quantity = group.Count()
+            }).ToList();
+
+            var order = new Order
+            {
+                IDClient = TempData.IdUser,
+                tickets = tickets
+            };
+
+            try
+            {
+                var response = await client.PostAsJsonAsync("order", order);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+ 
+                Console.WriteLine("Error creating order: " + ex.Message);
+                return false;
+            }
+        }
     }
+       
 }
+
+

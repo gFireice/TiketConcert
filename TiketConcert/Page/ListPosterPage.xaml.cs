@@ -25,14 +25,31 @@ namespace TiketConcert.Page
         public ListPosterPage()
         {
             InitializeComponent();
-            LoadConcertsAsync();
+            LoadConcerts();
         }
 
-        private async void LoadConcertsAsync()
+        private async void LoadConcerts()
         {
-            List<Model.Concert> concerts = new List<Model.Concert>();
-            concerts = await AppData.Context.GetAllConcrt();
-            lvConcert.ItemsSource = concerts;
+            try
+            {
+                if (AppData.concerts == null || !AppData.concerts.Any())
+                {
+                    AppData.concerts = await AppData.Context.GetAllConcrt();
+                }
+
+                if (AppData.concerts != null && AppData.concerts.Any())
+                {
+                    lvConcert.ItemsSource = AppData.concerts;
+                }
+                else
+                {
+                    MessageBox.Show("No concerts available at the moment.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading concerts: {ex.Message}");
+            }
         }
 
         private void lvConcert_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,19 +59,11 @@ namespace TiketConcert.Page
 
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            //if (sender is Grid grid)
-            //{
-            //    if (grid.DataContext is Concert concert)
-            //    {
-
-            //        NavigateComtrol.MainFrame.Navigate(new Page.shopConcertPage(concert));
-            //    }
-            //}
             if (sender is Grid grid)
             {
                 if (grid.DataContext is Concert concert)
                 {
-                    NavigateComtrol.ViewFrame.Navigate(new Page.shopConcertPage(concert));
+                    NavigateComtrol.MainFrame.Navigate(new Page.shopConcertPage(concert));
                 }
             }
 

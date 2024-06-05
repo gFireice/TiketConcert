@@ -24,5 +24,10 @@ namespace TiketConcert.Model
         public string Poster { get; set; }
 
         public string InStock { get; set; }
+
+        public static implicit operator List<object>(Concert v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

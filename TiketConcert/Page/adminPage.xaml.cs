@@ -27,7 +27,7 @@ namespace TiketConcert.Page
             InitializeComponent();
             NavigationFrame.Content = new Page.adminConcertPage();
             NavigateComtrol.MainFrame = this.NavigationFrame;
-            NavigateComtrol.ViewFrame = this.ViewFrame;
+
         }
 
     }

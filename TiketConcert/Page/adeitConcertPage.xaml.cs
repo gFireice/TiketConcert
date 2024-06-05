@@ -52,7 +52,7 @@ namespace TiketConcert.Page
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            NavigateComtrol.ViewFrame.Navigate(null);
+            NavigateComtrol.MainFrame.Navigate(null);
         }
     }
 }

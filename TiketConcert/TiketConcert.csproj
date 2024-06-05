@@ -161,9 +161,10 @@
     <Compile Include="Class\TempData.cs" />
     <Compile Include="Model\AuthUser.cs" />
     <Compile Include="Model\AuthUserNow.cs" />
-    <Compile Include="Model\Basket.cs" />
     <Compile Include="Model\Concert.cs" />
     <Compile Include="Model\imageConcert.cs" />
+    <Compile Include="Model\TicketOrder.cs" />
+    <Compile Include="Model\TiketsCount.cs" />
     <Compile Include="Page\adeitConcertPage.xaml.cs">
       <DependentUpon>adeitConcertPage.xaml</DependentUpon>
     </Compile>

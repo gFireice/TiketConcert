@@ -23,50 +23,30 @@
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" FontSize="26" Text="Корзина">
-                </TextBlock>
-                <TextBlock Grid.Column="2" 
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           FontSize="20"
-                           Text="Кол-во"
-                           ></TextBlock>
-                <TextBlock Grid.Column="3" 
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           FontSize="20"
-                           Text="Цена"
-                           ></TextBlock>
-                <TextBlock Grid.Column="4" 
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           FontSize="20"
-                           Text="Сумма"
-                           ></TextBlock>
-                <TextBlock Grid.Column="5" 
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           FontSize="20"
-                           Text="Удалить"
-                           ></TextBlock>
-
+                <Button Grid.Column="1" Width="100" Height="50"
+                        VerticalAlignment="Center" HorizontalAlignment="Left"
+                        Margin="0 0 0 0"
+                        Style="{DynamicResource ButtonAdmin}"
+                        Content="Оплатить"
+                        x:Name="ButtonPay" Click="ButtonPay_Click"
+                        ></Button>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" FontSize="26" Text="Корзина"/>
+                <TextBlock Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Text="Кол-во"/>
+                <TextBlock Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Text="Цена"/>
+                <TextBlock Grid.Column="4" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Text="Сумма"/>
+                <TextBlock Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" Text="Удалить"/>
             </Grid>
-            
         </Border>
-        <ListView Grid.Row="1" x:Name="lvConcert"      
-        Background="{x:Null}"
-        VerticalContentAlignment="Center"
-         d:ItemsSource="{d:SampleData ItemCount=5}"
-        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView Grid.Row="1" x:Name="lvConcert" Background="{x:Null}" VerticalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel></WrapPanel>
+                    <WrapPanel/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-            <ListView.ItemTemplate >
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid >
-                        <Border BorderBrush="Black" BorderThickness="0 0 0 1"  Background="White"  Height="90" Width="1015">
+                    <Grid>
+                        <Border BorderBrush="Black" BorderThickness="0 0 0 1" Background="White" Height="90" Width="1015">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="200"/>
@@ -78,32 +58,19 @@
                                 </Grid.ColumnDefinitions>
                                 <Border Margin="0" CornerRadius="20" Width="150" Height="70">
                                     <Border.Background>
-                                        <ImageBrush Stretch="UniformToFill"/>
+                                        <ImageBrush ImageSource="{Binding Path=ByteImage}" Stretch="UniformToFill"/>
                                     </Border.Background>
                                 </Border>
-                                <TextBlock Grid.Column="1" FontSize="20" 
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           Text="Yfpdfybt"></TextBlock>
-                                <TextBlock Grid.Column="2" FontSize="20" 
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           Text="Yfpdfybt"></TextBlock>
-                                <TextBlock Grid.Column="3" FontSize="20" 
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           Text="Yfpdfybt"></TextBlock>
-                                <TextBlock Grid.Column="4" FontSize="20" 
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Left"
-                                            Text="Yfpdfybt"></TextBlock>
-                                <Button Width="50" Height="50" Style="{DynamicResource ButtonEntry}" Grid.Column="5">
+                                <TextBlock Grid.Column="1" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TitleConcert}"/>
+                                <TextBlock Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Quantity}"/>
+                                <TextBlock Grid.Column="3" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Price}"/>
+                                <TextBlock Grid.Column="4" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Total}"/>
+                                <Button x:Name="RemoveConcert" Click="RemoveConcert_Click" Width="50" Height="50" Style="{DynamicResource ButtonEntry}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5">
                                     <Button.Background>
                                         <ImageBrush Stretch="UniformToFill" ImageSource="/image/delet.png"/>
                                     </Button.Background>
                                 </Button>
                             </Grid>
-                           
                         </Border>
                     </Grid>
                 </DataTemplate>

@@ -57,7 +57,7 @@ namespace TiketConcert.Page
                 {
                     case "1":
                         TempData.UserToken = authUser.token;
-                        TempData.IdUser=authUser.IdUser;
+                        TempData.IdUser=Convert.ToInt32(authUser.IdUser);
                         TempData.IdPosition=authUser.IDPosition;
                         TempData.FirstName =authUser.FirstName;
                         TempData.LastName =authUser.LastName;
@@ -66,7 +66,7 @@ namespace TiketConcert.Page
                         break;
                     case "2":
                         TempData.UserToken = authUser.token;
-                        TempData.IdUser = authUser.IdUser;
+                        TempData.IdUser = Convert.ToInt32(authUser.IdUser);
                         TempData.IdPosition = authUser.IDPosition;
                         TempData.FirstName = authUser.FirstName;
                         TempData.LastName = authUser.LastName;

@@ -30,12 +30,12 @@
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap"  x:Name="CostTxt" FontSize="16"></TextBlock>
                 
-                <Button  Margin="0 5 0 0"
+                <Button x:Name="ButtonBuy" Background="Red" Margin="0 5 0 0"
                     Width="150"
                           Height="30"
                           HorizontalAlignment="Left"
                           Content="Купить билет"
-                          Style="{DynamicResource ButtonBuy}"></Button>
+                          Style="{DynamicResource ButtonBuy}" Click="ButtonBuy_Click"></Button>
                 
             </StackPanel>
         </Grid>

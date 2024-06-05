@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TiketConcert.Model
 {
-    public partial class Basket
+    public partial class Concert
     {
-       
-
+        public int Quantity { get; set; }
     }
 }
