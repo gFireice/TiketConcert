@@ -23,13 +23,16 @@ namespace TiketConcert.Page
     /// </summary>
     public partial class adeitConcertPage
     {
+        private bool Add; 
         public adeitConcertPage()
         {
             InitializeComponent();
+            Add = true;
         }
 
         public adeitConcertPage(Concert concert)
         {
+            Add = false;
             InitializeComponent();
             byte[] imageData = AppData.Context.GetImage(concert.Poster);
             if (imageData != null)

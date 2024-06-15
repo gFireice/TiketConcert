@@ -131,6 +131,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Page\HistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\shopConcertPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,14 +165,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Class\AppData.cs" />
+    <Compile Include="Class\Filter.cs" />
     <Compile Include="Class\NavigateComtrol.cs" />
     <Compile Include="Class\TempData.cs" />
     <Compile Include="Model\AuthUser.cs" />
     <Compile Include="Model\AuthUserNow.cs" />
     <Compile Include="Model\Concert.cs" />
     <Compile Include="Model\imageConcert.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="Model\TicketOrder.cs" />
-    <Compile Include="Model\TiketsCount.cs" />
     <Compile Include="Page\adeitConcertPage.xaml.cs">
       <DependentUpon>adeitConcertPage.xaml</DependentUpon>
     </Compile>
@@ -176,6 +185,12 @@
     </Compile>
     <Compile Include="Page\BasketPage.xaml.cs">
       <DependentUpon>BasketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\shopConcertPage.xaml.cs">
       <DependentUpon>shopConcertPage.xaml</DependentUpon>

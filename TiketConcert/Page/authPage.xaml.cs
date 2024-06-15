@@ -61,6 +61,9 @@ namespace TiketConcert.Page
                         TempData.IdPosition=authUser.IDPosition;
                         TempData.FirstName =authUser.FirstName;
                         TempData.LastName =authUser.LastName;
+                        TempData.Email = authUser.Email;
+                        TempData.Phone = authUser.Phone;
+                        TempData.Birthday = authUser.Birthday;
                         //MessageBox.Show(TempData.IdUser);
                         NavigationService.Navigate(new Page.TiketView());
                         break;
@@ -70,6 +73,9 @@ namespace TiketConcert.Page
                         TempData.IdPosition = authUser.IDPosition;
                         TempData.FirstName = authUser.FirstName;
                         TempData.LastName = authUser.LastName;
+                        TempData.Email = authUser.Email;
+                        TempData.Phone = authUser.Phone;
+                        TempData.Birthday = authUser.Birthday;
                         //MessageBox.Show(TempData.IdUser);
                         NavigationService.Navigate(new Page.adminPage());
                         break;

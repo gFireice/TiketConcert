@@ -55,10 +55,10 @@
          MaxWidth="150"
          Grid.Row="0"
          Source="/image/LogoSecond.png"></Image>
-                <TextBox Tag="Поиск"  Style="{DynamicResource TextBoxSearch}"
+                <TextBox  x:Name="TextSearch" Tag="Поиск"  Style="{DynamicResource TextBoxSearch}"
          Width="350"
          Height="25"
-         Margin="30 0 0 0"
+         Margin="30 0 0 0" TextChanged="TextSearch_TextChanged"
          >
                     <TextBox.Effect>
                         <DropShadowEffect Opacity="0.25" RenderingBias="Quality" ShadowDepth="10" Direction="280" BlurRadius="15"/>
@@ -106,7 +106,7 @@
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Row="1">
-                        <Button Height="35" x:Name="ButtonProfile" Content="Мой профиль" Style="{DynamicResource ButtonSplash}"></Button>
+                        <Button Height="35" x:Name="ButtonProfile" Content="Мой профиль" Style="{DynamicResource ButtonSplash}" Click="ButtonProfile_Click"></Button>
                         <Button Height="35" x:Name="ButtonMain" Content="Главная" Style="{DynamicResource ButtonSplash}" Click="ButtonMain_Click"></Button>
                         <Button Height="35" x:Name="ButtonHistory" Content="История покупок" Style="{DynamicResource ButtonSplash}" Click="ButtonHistory_Click"></Button>
                         <Button Height="35" x:Name="Paket" Content="Корзина" Style="{DynamicResource ButtonSplash}" Click="Paket_Click"></Button>

@@ -65,6 +65,17 @@ namespace TiketConcert.Api
                 }
             }
         }
+        public async Task<List<Orderer>> GetOrderById(int clientId)
+        {
+            List<Orderer> orders = null;
+            HttpResponseMessage response = await client.GetAsync($"order/{clientId}");
+            if (response.IsSuccessStatusCode)
+            {
+                orders = await response.Content.ReadAsAsync<List<Orderer>>();
+            }
+            return orders;
+        }
+
         public async Task<bool> CreateOrder( List<Concert> basket)
         {
 

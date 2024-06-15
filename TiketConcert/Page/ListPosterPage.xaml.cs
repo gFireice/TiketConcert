@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,12 @@ namespace TiketConcert.Page
     /// </summary>
     public partial class ListPosterPage
     {
+        private Filter filter;
         public ListPosterPage()
         {
             InitializeComponent();
+            filter = new Filter();
+            filter.PropertyChanged += Filter_PropertyChanged;
             LoadConcerts();
         }
 
@@ -33,24 +37,32 @@ namespace TiketConcert.Page
             try
             {
                 if (AppData.concerts == null || !AppData.concerts.Any())
-                {
                     AppData.concerts = await AppData.Context.GetAllConcrt();
-                }
 
-                if (AppData.concerts != null && AppData.concerts.Any())
-                {
-                    lvConcert.ItemsSource = AppData.concerts;
-                }
-                else
-                {
-                    MessageBox.Show("No concerts available at the moment.");
-                }
+                    if (string.IsNullOrEmpty(Filter.TextFilter))
+                    {
+                        lvConcert.ItemsSource = AppData.concerts;
+                    }else
+                        lvConcert.ItemsSource = AppData.concerts
+                        .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
+                        .ToList();
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading concerts: {ex.Message}");
             }
         }
+
+        private void Filter_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Filter.TextFilter))
+            {
+                LoadConcerts();
+            }
+        }
+
 
         private void lvConcert_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

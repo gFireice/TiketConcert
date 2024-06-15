@@ -58,7 +58,7 @@ namespace TiketConcert.Page
 
         private void ButtonHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigateComtrol.MainFrame.Navigate(new Page.HistoryPage());
         }
 
         private void Paket_Click(object sender, RoutedEventArgs e)
@@ -70,6 +70,16 @@ namespace TiketConcert.Page
         {
 
             NavigateComtrol.MainFrame.Navigate(new Page.ListPosterPage());
+        }
+
+        private void ButtonProfile_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateComtrol.MainFrame.Navigate(new Page.ProfilePage());
+        }
+
+        private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter.TextFilter=TextSearch.Text;
         }
     }
 }

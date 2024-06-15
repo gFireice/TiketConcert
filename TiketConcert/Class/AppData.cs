@@ -19,5 +19,6 @@ namespace TiketConcert.Class
 
         public static List<Model.Concert> concerts { get; set; } = new List<Model.Concert>();
 
+        public static List<Model.Orderer> Orders { get; set; } = new List<Model.Orderer>();
     }
 }
