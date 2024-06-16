@@ -55,9 +55,14 @@ namespace TiketConcert.Page
             }
             
             DescriptionTxt.Text = concert.Description;
-            CostTxt.Text =$"Цена:{Convert.ToString(concert.Price)}р";
-            TitleTxt.Text = concert.TitleConcert;
-            
+            CostTxt.Text =$"Цена: {Convert.ToString(concert.Price)}р";
+            TitleTxt.Text = $"Цена: {concert.TitleConcert}";
+            TimeTxt.Text = $"Продолжительность: {Convert.ToString(concert.DurationInHours)}";
+            DateTxt.Text= $"Дата: {Convert.ToString(concert.StartDate)}";
+            PlaceTxt.Text = $"Место: {AppData.Place[concert.IDPlace]}";
+            OrgTxt.Text = $"Организация: {AppData.Organization[concert.IDOrganization]}";
+            StyleTxt.Text = $"Стиль Музыки: {AppData.MusicStyle[concert.IDStyleOfMusic]}";
+
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)

@@ -26,10 +26,14 @@
                 </Border.Background>
             </Border>
             <StackPanel HorizontalAlignment="Left" Grid.Column="1">
-                <TextBlock TextWrapping="Wrap"  x:Name="TitleTxt" FontSize="24">
+                <TextBlock TextWrapping="Wrap" Text="Tittle"  x:Name="TitleTxt" FontSize="24">
                 </TextBlock>
-                <TextBlock TextWrapping="Wrap"  x:Name="CostTxt" FontSize="16"></TextBlock>
-                
+                <TextBlock TextWrapping="Wrap" Text="Стоимость" x:Name="CostTxt" FontSize="16"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Дата" x:Name="DateTxt" FontSize="16"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Время" x:Name="TimeTxt" FontSize="16"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Место" x:Name="PlaceTxt" FontSize="16"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Организация" x:Name="OrgTxt" FontSize="16"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="СтильМузыки" x:Name="StyleTxt" FontSize="16"></TextBlock>
                 <Button x:Name="ButtonBuy" Background="Red" Margin="0 5 0 0"
                     Width="150"
                           Height="30"

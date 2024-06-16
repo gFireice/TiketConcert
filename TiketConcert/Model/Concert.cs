@@ -23,7 +23,13 @@ namespace TiketConcert.Model
 
         public string Poster { get; set; }
 
-        public string InStock { get; set; }
+        public int InStock { get; set; }
+
+        public int IDStyleOfMusic { get; set; }
+
+        public int IDPlace { get; set; }
+
+        public int IDOrganization { get; set; }
 
         public static implicit operator List<object>(Concert v)
         {

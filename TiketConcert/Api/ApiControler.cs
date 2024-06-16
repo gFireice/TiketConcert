@@ -18,7 +18,7 @@ namespace TiketConcert.Api
 
         public async Task RunAsync()
         {
-            client.BaseAddress = new Uri("http://95.165.143.19:8085/api/");
+            client.BaseAddress = new Uri("http://localhost:8085/api/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -56,7 +56,7 @@ namespace TiketConcert.Api
             {
                 try
                 {
-                    byte[] data = webClient.DownloadData($"http://95.165.143.19:8085/api/uploads/{path}");
+                    byte[] data = webClient.DownloadData($"http://localhost:8085/api/uploads/{path}");
                     return data;
                 }
                 catch (WebException)
@@ -65,6 +65,7 @@ namespace TiketConcert.Api
                 }
             }
         }
+
         public async Task<List<Orderer>> GetOrderById(int clientId)
         {
             List<Orderer> orders = null;
@@ -103,6 +104,36 @@ namespace TiketConcert.Api
             {
  
                 Console.WriteLine("Error creating order: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> AddConcert(Concert concert)
+        {
+            try
+            {
+                var response = await client.PostAsJsonAsync("concert", concert);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error adding concert: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateConcert(int concertId, Concert concert)
+        {
+            try
+            {
+                var response = await client.PutAsJsonAsync($"concert/{concertId}", concert);
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error updating concert: " + ex.Message);
                 return false;
             }
         }

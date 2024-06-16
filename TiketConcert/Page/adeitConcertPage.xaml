@@ -34,8 +34,32 @@
                     <TextBox Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Цена" Width="auto" x:Name="CostTxt" FontSize="16"></TextBox>
                     <TextBlock Text="р" TextWrapping="Wrap" FontSize="16"></TextBlock>
                 </WrapPanel>
-                
-
+                <WrapPanel>
+                    <TextBlock Text="Дата:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <DatePickerTextBox x:Name="BoxDate" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Время" Width="auto" FontSize="16"></DatePickerTextBox>
+                    <TextBlock Text="р" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock TextWrapping="Wrap" FontSize="16"><Run Language="ru-ru" Text="Часы"/><Run Text=":"/></TextBlock>
+                    <TextBox x:Name="BoxTime" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Цена" Width="auto" FontSize="16"></TextBox>
+                    <TextBlock Text="м" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Место:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <ComboBox x:Name="BoxPalace"  Tag="Цена" Width="auto" FontSize="16"></ComboBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Оганизация:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <ComboBox x:Name="BoxOrganization" Width="auto" FontSize="16"></ComboBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="Стиль музыки:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <ComboBox x:Name="BoxStyle" Width="auto" FontSize="16"></ComboBox>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="В наличии:" TextWrapping="Wrap" FontSize="16"></TextBlock>
+                    <TextBox  x:Name="BoxStock" Width="auto" FontSize="16"></TextBox>
+                </WrapPanel>
             </StackPanel>
         </Grid>
         <Border Grid.Row="1"
@@ -73,6 +97,7 @@
             Margin="5"
             Grid.Row="1"
             Style="{DynamicResource ButtonAdmin}"
-            Content="Готово  " Width="auto" Height="30"></Button>
+            x:Name="ButtonDone"
+            Content="Готово  " Width="auto" Height="30" Click="ButtonDone_Click"></Button>
     </Grid>
 </Page>
