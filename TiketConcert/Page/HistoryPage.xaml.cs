@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TiketConcert.Class;
+using TiketConcert.Model;
 
 namespace TiketConcert.Page
 {
@@ -24,16 +25,19 @@ namespace TiketConcert.Page
         public HistoryPage()
         {
             InitializeComponent();
-            
-            Filter();
+
+            LoadHistory();
         }
 
-        public async void Filter()
+        public async void LoadHistory()
         {
             AppData.Orders = await AppData.Context.GetOrderById(TempData.IdUser);
  
             var groupedItems = AppData.Orders;
-              
+            if (!string.IsNullOrEmpty(Filter.TextFilter))
+                groupedItems = groupedItems
+                   .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
+                   .ToList();
 
             lvConcert.ItemsSource = groupedItems;
         }

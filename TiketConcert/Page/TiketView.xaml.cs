@@ -53,6 +53,10 @@ namespace TiketConcert.Page
         private void ButtonExith_Click(object sender, RoutedEventArgs e)
         {
             TempData.UserToken = null;
+            AppData.basket = null;
+            Filter.TextFilter = null;
+            Filter.Place = 0;
+            Filter.Style = 0;
             NavigationService.Navigate(new Page.authPage());
         }
 
@@ -80,10 +84,12 @@ namespace TiketConcert.Page
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter.TextFilter=TextSearch.Text;
-            //if(Frame is ListPosterPage)
-            //{
-
-            //}
+            if (NavigateComtrol.MainFrame.Content is ListPosterPage)
+                NavigateComtrol.MainFrame.Navigate(new Page.ListPosterPage());
+            if (NavigateComtrol.MainFrame.Content is BasketPage)
+                NavigateComtrol.MainFrame.Navigate(new Page.BasketPage());
+            if (NavigateComtrol.MainFrame.Content is HistoryPage)
+                NavigateComtrol.MainFrame.Navigate(new Page.HistoryPage());
         }
 
         private void PageSupport_Click(object sender, RoutedEventArgs e)

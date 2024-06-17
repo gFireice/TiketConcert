@@ -7,34 +7,12 @@ using System.Threading.Tasks;
 
 namespace TiketConcert.Class
 {
-    public class Filter : INotifyPropertyChanged
+    public class Filter 
     {
-        private static string _textFilter;
-        public static string TextFilter
-        {
-            get => _textFilter;
-            set
-            {
-                if (_textFilter != value)
-                {
-                    _textFilter = value;
-                    OnStaticPropertyChanged(nameof(TextFilter));
-                }
-            }
-        }
+        public static string TextFilter { get; set; }
 
-        public static event PropertyChangedEventHandler StaticPropertyChanged;
+        public static int Place { get; set; } = 0;
 
-        private static void OnStaticPropertyChanged(string propertyName)
-        {
-            StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public static int Style { get; set; } = 0;
     }
 }

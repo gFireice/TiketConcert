@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TiketConcert.Api;
 using TiketConcert.Class;
+using TiketConcert.Model;
 
 namespace TiketConcert.Page
 {
@@ -26,10 +27,10 @@ namespace TiketConcert.Page
         public BasketPage()
         {
             InitializeComponent();
-            Filter();
+            LoadBasket();
         }
 
-        public void Filter()
+        public void LoadBasket()
         {
             var groupedItems = AppData.basket
                 .GroupBy(item => item.TitleConcert)
@@ -43,8 +44,15 @@ namespace TiketConcert.Page
                 })
                 .ToList();
 
+            if (!string.IsNullOrEmpty(Filter.TextFilter))
+                groupedItems = groupedItems
+                   .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
+                   .ToList();
             lvConcert.ItemsSource = groupedItems;
         }
+
+
+
 
         private void RemoveConcert_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +64,7 @@ namespace TiketConcert.Page
                 if (concertToRemove != null)
                 {
                     AppData.basket.Remove(concertToRemove);
-                    Filter();
+                    LoadBasket();
                 }
             }
         }
@@ -69,7 +77,7 @@ namespace TiketConcert.Page
             {
                 MessageBox.Show("Выполнен");
                 AppData.basket.Clear();
-                Filter();
+                LoadBasket();
             }
             else
             {

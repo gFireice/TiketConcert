@@ -23,13 +23,17 @@ namespace TiketConcert.Page
     /// </summary>
     public partial class ListPosterPage
     {
-        private Filter filter;
+
         public ListPosterPage()
         {
             InitializeComponent();
-            filter = new Filter();
-            filter.PropertyChanged += Filter_PropertyChanged;
-            ForBox();
+
+
+            BoxPlace.ItemsSource = AppData.Place;
+            BoxPlace.SelectedIndex = Filter.Place;
+            BoxStyle.ItemsSource = AppData.MusicStyle;
+            BoxStyle.SelectedIndex=Filter.Style;
+
             LoadConcerts();
         }
 
@@ -41,14 +45,10 @@ namespace TiketConcert.Page
                 if (AppData.concerts == null || !AppData.concerts.Any())
                     AppData.concerts = await AppData.Context.GetAllConcrt();
                 List<Concert> concerts = AppData.concerts;
-                if (string.IsNullOrEmpty(Filter.TextFilter))
-                {
-                    concerts = AppData.concerts;
-                }
-                else
+                if (!string.IsNullOrEmpty(Filter.TextFilter))
                     concerts = AppData.concerts
-                    .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
-                    .ToList();
+                       .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
+                       .ToList(); 
                 if (BoxStyle.SelectedIndex > 0)
                     concerts = concerts.Where(c => c.IDStyleOfMusic.Equals(BoxStyle.SelectedIndex)).ToList();
                 if (BoxPlace.SelectedIndex > 0)
@@ -63,30 +63,11 @@ namespace TiketConcert.Page
             }
         }
 
-        private void Filter_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Filter.TextFilter))
-            {
-                LoadConcerts();
-            }
-        }
-
-
         private void lvConcert_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-        public void ForBox()
-        {
-            foreach (string address in AppData.Place)
-            {
-                BoxPlace.Items.Add(address);
-            }
-            foreach (string address in AppData.MusicStyle)
-            {
-                BoxStyle.Items.Add(address);
-            }
-        }
+
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is Grid grid)
@@ -101,11 +82,13 @@ namespace TiketConcert.Page
 
         private void BoxPlace_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Filter.Place = BoxPlace.SelectedIndex;
             LoadConcerts();
         }
 
         private void BoxStyle_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {   
+            Filter.Style = BoxStyle.SelectedIndex;
             LoadConcerts();
         }
 
