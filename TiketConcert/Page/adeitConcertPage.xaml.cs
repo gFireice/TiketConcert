@@ -33,7 +33,9 @@ namespace TiketConcert.Page
         {
             InitializeComponent();
             //Concert concert;
-            ForBox();
+            BoxPalace.ItemsSource = AppData.Place;
+            BoxOrganization.ItemsSource = AppData.Organization;
+            BoxStyle.ItemsSource = AppData.MusicStyle;
             AddCode = true;
         }
 
@@ -42,7 +44,9 @@ namespace TiketConcert.Page
             concerts=concert;
             AddCode = false;
             InitializeComponent();
-            ForBox();
+            BoxPalace.ItemsSource = AppData.Place;
+            BoxOrganization.ItemsSource = AppData.Organization;
+            BoxStyle.ItemsSource= AppData.MusicStyle;
             byte[] imageData = AppData.Context.GetImage(concert.Poster);
             if (imageData != null)
             {
@@ -60,29 +64,15 @@ namespace TiketConcert.Page
             DescriptionTxt.Text = concert.Description;
             CostTxt.Text = Convert.ToString(concert.Price);
             TitleTxt.Text = concert.TitleConcert;
-            BoxOrganization.SelectedIndex = concert.IDOrganization - 1;
-            BoxPalace.SelectedIndex = concert.IDPlace-1;
-            BoxStyle.SelectedIndex = concert.IDStyleOfMusic-1;
+            BoxOrganization.SelectedIndex = concert.IDOrganization;
+            BoxPalace.SelectedIndex = concert.IDPlace;
+            BoxStyle.SelectedIndex = concert.IDStyleOfMusic;
             BoxDate.Text= Convert.ToString(concert.StartDate);
             BoxStock.Text = Convert.ToString(concert.InStock);
             BoxTime.Text = Convert.ToString(concert.DurationInHours);
 
         }
-        public void ForBox()
-        {
-            foreach (string address in AppData.Place)
-            {
-                BoxPalace.Items.Add(address);
-            }
-            foreach (string address in AppData.Organization)
-            {
-                BoxOrganization.Items.Add(address);
-            }
-            foreach (string address in AppData.MusicStyle)
-            {
-                BoxStyle.Items.Add(address);
-            }
-        }
+        
         private  void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             NavigateComtrol.MainFrame.Navigate(new Page.adminConcertPage());
@@ -90,44 +80,66 @@ namespace TiketConcert.Page
 
         private async void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
-            bool isSuccess=false;
-            switch (AddCode)
+            try
             {
-                  
-                case true:
-                    concerts.DurationInHours =Convert.ToDecimal(BoxTime.Text);
-                    concerts.StartDate=Convert.ToDateTime(BoxDate.Text);
-                    concerts.TitleConcert = TitleTxt.Text;
-                    concerts.Description=DescriptionTxt.Text;
-                    concerts.Price=Convert.ToDecimal(CostTxt.Text);
-                    concerts.IDPlace = BoxPalace.SelectedIndex+1;
-                    concerts.IDStyleOfMusic=BoxStyle.SelectedIndex + 1;
-                    concerts.IDOrganization = BoxOrganization.SelectedIndex + 1;
-                    concerts.InStock=Convert.ToInt32(BoxStock.Text);
-                    isSuccess = await AppData.Context.AddConcert(concerts);
-                break;
-                case false:
-                    concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
-                    concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
-                    concerts.TitleConcert = TitleTxt.Text;
-                    concerts.Description = DescriptionTxt.Text;
-                    concerts.Price = Convert.ToDecimal(CostTxt.Text);
-                    concerts.IDPlace = BoxPalace.SelectedIndex + 1;
-                    concerts.IDStyleOfMusic = BoxStyle.SelectedIndex + 1;
-                    concerts.IDOrganization = BoxOrganization.SelectedIndex + 1;
-                    concerts.InStock = Convert.ToInt32(BoxStock.Text);
-                    isSuccess = await AppData.Context.UpdateConcert(concerts.IDConcert,concerts);
-                    break;
+                bool isSuccess = false;
+                if (checkFormat() == true)
+                {
+                    switch (AddCode)
+                    {
+
+                        case true:
+                            concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
+                            concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
+                            concerts.TitleConcert = TitleTxt.Text;
+                            concerts.Description = DescriptionTxt.Text;
+                            concerts.Price = Convert.ToDecimal(CostTxt.Text);
+                            concerts.IDPlace = BoxPalace.SelectedIndex;
+                            concerts.IDStyleOfMusic = BoxStyle.SelectedIndex;
+                            concerts.IDOrganization = BoxOrganization.SelectedIndex;
+                            concerts.InStock = Convert.ToInt32(BoxStock.Text);
+                            isSuccess = await AppData.Context.AddConcert(concerts);
+                            break;
+                        case false:
+                            concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
+                            concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
+                            concerts.TitleConcert = TitleTxt.Text;
+                            concerts.Description = DescriptionTxt.Text;
+                            concerts.Price = Convert.ToDecimal(CostTxt.Text);
+                            concerts.IDPlace = BoxPalace.SelectedIndex;
+                            concerts.IDStyleOfMusic = BoxStyle.SelectedIndex;
+                            concerts.IDOrganization = BoxOrganization.SelectedIndex;
+                            concerts.InStock = Convert.ToInt32(BoxStock.Text);
+                            isSuccess = await AppData.Context.UpdateConcert(concerts.IDConcert, concerts);
+                            break;
+                    }
+                    if (isSuccess)
+                    {
+                        System.Windows.MessageBox.Show("Выполнено");
+                        AppData.basket.Clear();
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else System.Windows.MessageBox.Show( "Неизвестная ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            if (isSuccess)
+            catch
             {
-                System.Windows.MessageBox.Show("Order successfully created!");
-                AppData.basket.Clear();
+
             }
-            else
-            {
-                System.Windows.MessageBox.Show("Failed to create order. Please try again.");
-            }
+        }
+
+        private bool checkFormat()
+        {
+            bool code = true;
+            if(string.IsNullOrEmpty(TitleTxt.Text) || string.IsNullOrEmpty(BoxTime.Text) || 
+                string.IsNullOrEmpty(CostTxt.Text) || string.IsNullOrEmpty(DescriptionTxt.Text) ||
+                string.IsNullOrEmpty(BoxStock.Text) || string.IsNullOrEmpty(BoxDate.Text) ||
+                BoxPalace.SelectedIndex ==0 || BoxStyle.SelectedIndex==0 || BoxOrganization.SelectedIndex==0 
+                ) code = false;
+            return code;
         }
     }
 }

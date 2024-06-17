@@ -21,7 +21,8 @@ namespace TiketConcert.Class
 
         public static List<Model.Orderer> Orders { get; set; } = new List<Model.Orderer>();
 
-        public static string[] Place = { 
+        public static List<String> Place = new List<String> { 
+        "Пусто",
         "ул. Пушкина, дом Колотушкина 4А",
         "ул. Фарфоровая, дом 4Б",
         "ул. Сретенка, дом 9",
@@ -29,7 +30,18 @@ namespace TiketConcert.Class
         "пр-кт Богатый, дом 56Ю",
         "ул. Бузовой, дом Арбузовой 34"
         };
-        public static string[] Organization = {
+        public static List<String> PlaceA = new List<String>
+        {
+            "Пусто",
+            "Lounge-bar \"У Фархата\"",
+            "Концертный зал \"Фарфоровое зеркало\"",
+            "Бар \"Алиби\"",
+            "Концертный зал \"Почемучка\"",
+            "Крокус Сити Холл",
+            "Бар \"Ольга\""
+        };
+        public static List<String> Organization = new List<string> {
+        "Пусто",
         "Рус",
         "Фэйвл",
         "Гэллмэн",
@@ -39,7 +51,8 @@ namespace TiketConcert.Class
         "Ахметжамиль",
         "Чечек",
         "Новомира"};
-        public static string[] MusicStyle = {
+        public static List<String> MusicStyle = new List<String>{
+        "Пусто",
         "Рок",
         "Металл",
         "Хип-хоп",

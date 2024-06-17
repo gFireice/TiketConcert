@@ -10,7 +10,7 @@
          d:DesignHeight="579" d:DesignWidth="1015"
       Title="ListPosterPage">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
@@ -30,25 +30,23 @@
             Width="25">
                 <Image Source="/image/icon-calendar 1.png"></Image>
             </Border>
-            <ComboBox Style="{DynamicResource ComboBoxStyle1}"
-            Width="90"
-             Height="20"    
-            Margin="50 0 0 0"
-            x:Name="PP" Tag="Выбрать Жанр">
-            </ComboBox>
+            <WrapPanel Margin="50 0 0 0" >
+                <TextBlock Text="Стиль:"></TextBlock>
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}"
+                Width="90"
+                Height="20"
+                x:Name="BoxStyle" SelectionChanged="BoxStyle_SelectionChanged">
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel Margin="50 0 0 0">
+            <TextBlock Text="Место:"></TextBlock>
             <ComboBox
             Width="90"
             Height="20"
-            Margin="50 0 0 0"
-            x:Name="dd" Tag="Выбрать Жанр">
+            x:Name="BoxPlace" SelectionChanged="BoxPlace_SelectionChanged" >
             </ComboBox>
-            <ComboBox
-            Width="90"
-            Height="20"
-            Margin="50 0 0 0"
-            x:Name="ll" Tag="Выбрать Жанр">
-            </ComboBox>
-
+            </WrapPanel>
+          
         </StackPanel>
         <ListView Grid.Row="2" x:Name="lvConcert"
           SelectionChanged="lvConcert_SelectionChanged"       
@@ -95,7 +93,7 @@
                             <TextBlock FontSize="16" Text="{Binding TitleConcert}"></TextBlock>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontSize="12" Text="{Binding StartDate}"></TextBlock>
-                                <TextBlock Margin="10 0 0 0" FontSize="12" Text="{Binding StartDate}"></TextBlock>
+                                <TextBlock Margin="10 0 0 0" FontSize="12"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </Grid>

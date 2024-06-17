@@ -67,13 +67,13 @@ namespace TiketConcert.Page
 
             if (isSuccess)
             {
-                MessageBox.Show("Order successfully created!");
+                MessageBox.Show("Выполнен");
                 AppData.basket.Clear();
                 Filter();
             }
             else
             {
-                MessageBox.Show("Failed to create order. Please try again.");
+                MessageBox.Show("Ошибка");
             }
         }
     }

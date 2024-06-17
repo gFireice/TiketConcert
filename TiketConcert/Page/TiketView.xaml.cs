@@ -80,6 +80,15 @@ namespace TiketConcert.Page
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter.TextFilter=TextSearch.Text;
+            //if(Frame is ListPosterPage)
+            //{
+
+            //}
+        }
+
+        private void PageSupport_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateComtrol.MainFrame.Navigate(new Page.SupportPage());
         }
     }
 }

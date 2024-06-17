@@ -151,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Page\SupportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\TiketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,6 +205,9 @@
     </Compile>
     <Compile Include="Page\registPage.xaml.cs">
       <DependentUpon>registPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\SupportPage.xaml.cs">
+      <DependentUpon>SupportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\TiketView.xaml.cs">
       <DependentUpon>TiketView.xaml</DependentUpon>

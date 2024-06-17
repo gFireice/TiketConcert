@@ -29,23 +29,31 @@ namespace TiketConcert.Page
             InitializeComponent();
             filter = new Filter();
             filter.PropertyChanged += Filter_PropertyChanged;
+            ForBox();
             LoadConcerts();
         }
 
         private async void LoadConcerts()
         {
+            
             try
             {
                 if (AppData.concerts == null || !AppData.concerts.Any())
                     AppData.concerts = await AppData.Context.GetAllConcrt();
-
-                    if (string.IsNullOrEmpty(Filter.TextFilter))
-                    {
-                        lvConcert.ItemsSource = AppData.concerts;
-                    }else
-                        lvConcert.ItemsSource = AppData.concerts
-                        .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
-                        .ToList();
+                List<Concert> concerts = AppData.concerts;
+                if (string.IsNullOrEmpty(Filter.TextFilter))
+                {
+                    concerts = AppData.concerts;
+                }
+                else
+                    concerts = AppData.concerts
+                    .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
+                    .ToList();
+                if (BoxStyle.SelectedIndex > 0)
+                    concerts = concerts.Where(c => c.IDStyleOfMusic.Equals(BoxStyle.SelectedIndex)).ToList();
+                if (BoxPlace.SelectedIndex > 0)
+                    concerts = concerts.Where(c => c.IDPlace.Equals(BoxPlace.SelectedIndex)).ToList();
+                lvConcert.ItemsSource = concerts;
 
 
             }
@@ -68,7 +76,17 @@ namespace TiketConcert.Page
         {
 
         }
-
+        public void ForBox()
+        {
+            foreach (string address in AppData.Place)
+            {
+                BoxPlace.Items.Add(address);
+            }
+            foreach (string address in AppData.MusicStyle)
+            {
+                BoxStyle.Items.Add(address);
+            }
+        }
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is Grid grid)
@@ -80,5 +98,17 @@ namespace TiketConcert.Page
             }
 
         }
+
+        private void BoxPlace_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadConcerts();
+        }
+
+        private void BoxStyle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadConcerts();
+        }
+
+        
     }
 }

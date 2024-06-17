@@ -77,3 +77,5 @@ C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Pag
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\ProfilePage.baml
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\HistoryPage.g.cs
 C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\HistoryPage.baml
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\SupportPage.g.cs
+C:\Users\ya.DESKTOP-RC4HH44\source\repos\TiketConcert\TiketConcert\obj\Debug\Page\SupportPage.baml

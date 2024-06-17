@@ -42,7 +42,6 @@
                 <WrapPanel>
                     <TextBlock TextWrapping="Wrap" FontSize="16"><Run Language="ru-ru" Text="Часы"/><Run Text=":"/></TextBlock>
                     <TextBox x:Name="BoxTime" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Цена" Width="auto" FontSize="16"></TextBox>
-                    <TextBlock Text="м" TextWrapping="Wrap" FontSize="16"></TextBlock>
                 </WrapPanel>
                 <WrapPanel>
                     <TextBlock Text="Место:" TextWrapping="Wrap" FontSize="16"></TextBlock>
