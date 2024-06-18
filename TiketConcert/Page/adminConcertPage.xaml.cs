@@ -30,34 +30,23 @@ namespace TiketConcert.Page
         }
         private async void LoadConcertsAsync()
         {
-            List<Model.Concert> concerts = new List<Model.Concert>();
-            AppData.concerts = await AppData.Context.GetAllConcrt();
-                 concerts = AppData.concerts;
-            if (!string.IsNullOrEmpty(Filter.TextFilter))
-                concerts = AppData.concerts
-                   .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
-                   .ToList();
-            lvConcert.ItemsSource = concerts;
-        }
-        private async void LoadConcerts()
-        {
-
             try
             {
-                if (AppData.concerts == null || !AppData.concerts.Any())
-                    AppData.concerts = await AppData.Context.GetAllConcrt();
-                List<Concert> concerts = AppData.concerts;
+                List<Model.Concert> concerts = new List<Model.Concert>();
+                AppData.concerts = await AppData.Context.GetAllConcrt();
+                concerts = AppData.concerts;
                 if (!string.IsNullOrEmpty(Filter.TextFilter))
                     concerts = AppData.concerts
                        .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))
                        .ToList();
-
+                lvConcert.ItemsSource = concerts;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading concerts: {ex.Message}");
             }
         }
+
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             

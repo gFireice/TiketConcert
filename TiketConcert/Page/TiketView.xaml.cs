@@ -52,7 +52,7 @@ namespace TiketConcert.Page
 
         private void ButtonExith_Click(object sender, RoutedEventArgs e)
         {
-            TempData.UserToken = null;
+       
             AppData.basket = null;
             Filter.TextFilter = null;
             Filter.Place = 0;

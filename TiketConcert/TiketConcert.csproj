@@ -199,7 +199,6 @@
     <Compile Include="Page\shopConcertPage.xaml.cs">
       <DependentUpon>shopConcertPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\User.cs" />
     <Compile Include="Page\ListPosterPage.xaml.cs">
       <DependentUpon>ListPosterPage.xaml</DependentUpon>
     </Compile>

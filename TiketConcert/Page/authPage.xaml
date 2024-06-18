@@ -77,7 +77,7 @@
                     
                     <Label HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Hyperlink x:Name="PageReg" Click="PageReg_Click">
-                            <Label Content="Регитрация"
+                            <Label Content="Регистрация"
                    Style="{StaticResource DemoLinkLabel}"/>
                         </Hyperlink>
                     </Label>

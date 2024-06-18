@@ -32,7 +32,6 @@ namespace TiketConcert.Page
         public adeitConcertPage()
         {
             InitializeComponent();
-            //Concert concert;
             BoxPalace.ItemsSource = AppData.Place;
             BoxOrganization.ItemsSource = AppData.Organization;
             BoxStyle.ItemsSource = AppData.MusicStyle;
@@ -87,31 +86,22 @@ namespace TiketConcert.Page
                 bool isSuccess = false;
                 if (checkFormat() == true)
                 {
+                    concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
+                    concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
+                    concerts.TitleConcert = TitleTxt.Text;
+                    concerts.Description = DescriptionTxt.Text;
+                    concerts.Price = Convert.ToDecimal(CostTxt.Text);
+                    concerts.IDPlace = BoxPalace.SelectedIndex;
+                    concerts.IDStyleOfMusic = BoxStyle.SelectedIndex;
+                    concerts.IDOrganization = BoxOrganization.SelectedIndex;
+                    concerts.InStock = Convert.ToInt32(BoxStock.Text);
                     switch (AddCode)
                     {
 
-                        case true:
-                            concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
-                            concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
-                            concerts.TitleConcert = TitleTxt.Text;
-                            concerts.Description = DescriptionTxt.Text;
-                            concerts.Price = Convert.ToDecimal(CostTxt.Text);
-                            concerts.IDPlace = BoxPalace.SelectedIndex;
-                            concerts.IDStyleOfMusic = BoxStyle.SelectedIndex;
-                            concerts.IDOrganization = BoxOrganization.SelectedIndex;
-                            concerts.InStock = Convert.ToInt32(BoxStock.Text);
+                        case true:                           
                             isSuccess = await AppData.Context.AddConcert(concerts);
                             break;
                         case false:
-                            concerts.DurationInHours = Convert.ToDecimal(BoxTime.Text);
-                            concerts.StartDate = Convert.ToDateTime(BoxDate.Text);
-                            concerts.TitleConcert = TitleTxt.Text;
-                            concerts.Description = DescriptionTxt.Text;
-                            concerts.Price = Convert.ToDecimal(CostTxt.Text);
-                            concerts.IDPlace = BoxPalace.SelectedIndex;
-                            concerts.IDStyleOfMusic = BoxStyle.SelectedIndex;
-                            concerts.IDOrganization = BoxOrganization.SelectedIndex;
-                            concerts.InStock = Convert.ToInt32(BoxStock.Text);
                             isSuccess = await AppData.Context.UpdateConcert(concerts.IDConcert, concerts);
                             break;
                     }
@@ -157,22 +147,24 @@ namespace TiketConcert.Page
             {
 
                 PerformDeleteOperation();
-                NavigateComtrol.MainFrame.Navigate(new Page.adminConcertPage());
+                
             }
         }
 
         private async void PerformDeleteOperation()
         {
+       
             try
             {
                 bool isDeleted = await AppData.Context.DeleteConcert(concerts.IDConcert);
                 if (isDeleted)
                 {
                     System.Windows.MessageBox.Show("Удаление выполнено", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    NavigateComtrol.MainFrame.Navigate(new Page.adminConcertPage());
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Ошибка не удалено1", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("Ошибка не удалено", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)

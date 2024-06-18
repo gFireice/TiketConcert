@@ -21,7 +21,7 @@ namespace TiketConcert.Api
             client.BaseAddress = new Uri("http://localhost:8085/api/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<AuthUser> Authorization(AuthUserNow user)

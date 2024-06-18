@@ -28,17 +28,19 @@ namespace TiketConcert.Page
            
         }
 
-        private async void Auth()
+       
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(LoginBox.Text))
             {
-                
+
                 ErroText.Text = "Пустой Логин";
                 return;
             }
             if (string.IsNullOrWhiteSpace(PassBox.Text))
             {
-              
+
                 ErroText.Text = "Пустой Пароль";
                 return;
             }
@@ -54,29 +56,21 @@ namespace TiketConcert.Page
 
                 if (authUser.error == null)
                 {
+                    TempData.IdUser = Convert.ToInt32(authUser.IdUser);
+                    TempData.IdPosition = authUser.IDPosition;
+                    TempData.FirstName = authUser.FirstName;
+                    TempData.LastName = authUser.LastName;
+                    TempData.Email = authUser.Email;
+                    TempData.Phone = authUser.Phone;
+                    TempData.Birthday = authUser.Birthday;
                     switch (authUser.IDPosition)
                     {
                         case "1":
-                            TempData.UserToken = authUser.token;
-                            TempData.IdUser = Convert.ToInt32(authUser.IdUser);
-                            TempData.IdPosition = authUser.IDPosition;
-                            TempData.FirstName = authUser.FirstName;
-                            TempData.LastName = authUser.LastName;
-                            TempData.Email = authUser.Email;
-                            TempData.Phone = authUser.Phone;
-                            TempData.Birthday = authUser.Birthday;
-                            //MessageBox.Show(TempData.IdUser);
                             NavigationService.Navigate(new Page.TiketView());
                             break;
                         case "2":
-                            TempData.UserToken = authUser.token;
-                            TempData.IdUser = Convert.ToInt32(authUser.IdUser);
-                            TempData.IdPosition = authUser.IDPosition;
-                            TempData.FirstName = authUser.FirstName;
-                            TempData.LastName = authUser.LastName;
-                            TempData.Email = authUser.Email;
-                            TempData.Phone = authUser.Phone;
-                            TempData.Birthday = authUser.Birthday;
+
+
                             NavigationService.Navigate(new Page.adminPage());
                             break;
                         default:
@@ -85,7 +79,6 @@ namespace TiketConcert.Page
                 }
                 else
                 {
-                    //
                     ErroText.Text = authUser.error;
                 }
             }
@@ -93,11 +86,6 @@ namespace TiketConcert.Page
             {
                 MessageBox.Show(authUser?.error ?? "Неизвестная ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Auth();
         }
 
         private void PageReg_Click(object sender, RoutedEventArgs e)

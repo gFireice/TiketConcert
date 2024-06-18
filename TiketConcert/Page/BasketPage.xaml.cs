@@ -71,17 +71,24 @@ namespace TiketConcert.Page
 
         private async void ButtonPay_Click(object sender, RoutedEventArgs e)
         {
-            bool isSuccess = await AppData.Context.CreateOrder(AppData.basket);
+            try
+            {
+                bool isSuccess = await AppData.Context.CreateOrder(AppData.basket);
 
-            if (isSuccess)
-            {
-                MessageBox.Show("Выполнен");
-                AppData.basket.Clear();
-                LoadBasket();
+                if (isSuccess)
+                {
+                    MessageBox.Show("Выполнен");
+                    AppData.basket.Clear();
+                    LoadBasket();
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка");
+                MessageBox.Show(ex.Message);
             }
         }
     }
