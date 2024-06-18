@@ -41,9 +41,11 @@ namespace TiketConcert.Page
 
         public adeitConcertPage(Concert concert)
         {
+           
             concerts=concert;
             AddCode = false;
             InitializeComponent();
+            ButtonRemove.Visibility = Visibility.Visible;
             BoxPalace.ItemsSource = AppData.Place;
             BoxOrganization.ItemsSource = AppData.Organization;
             BoxStyle.ItemsSource= AppData.MusicStyle;
@@ -123,11 +125,11 @@ namespace TiketConcert.Page
                         System.Windows.MessageBox.Show("Ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                else System.Windows.MessageBox.Show( "Неизвестная ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                else System.Windows.MessageBox.Show( "Неверный формат", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch
+            catch (Exception ex)
             {
-
+                System.Windows.MessageBox.Show($"Ошибка не изменения/добавления: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -140,6 +142,43 @@ namespace TiketConcert.Page
                 BoxPalace.SelectedIndex ==0 || BoxStyle.SelectedIndex==0 || BoxOrganization.SelectedIndex==0 
                 ) code = false;
             return code;
+        }
+
+        private void BoxTime_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonRemove_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = System.Windows.MessageBox.Show("Удлить?", "Удлить", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+
+                PerformDeleteOperation();
+                NavigateComtrol.MainFrame.Navigate(new Page.adminConcertPage());
+            }
+        }
+
+        private async void PerformDeleteOperation()
+        {
+            try
+            {
+                bool isDeleted = await AppData.Context.DeleteConcert(concerts.IDConcert);
+                if (isDeleted)
+                {
+                    System.Windows.MessageBox.Show("Удаление выполнено", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Ошибка не удалено1", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Ошибка не удалено: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

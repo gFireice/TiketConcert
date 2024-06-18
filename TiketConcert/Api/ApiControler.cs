@@ -137,6 +137,20 @@ namespace TiketConcert.Api
                 return false;
             }
         }
+        public async Task<bool> DeleteConcert(int concertId)
+        {
+            try
+            {
+                var response = await client.DeleteAsync($"concert/{concertId}");
+                response.EnsureSuccessStatusCode();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting concert: " + ex.Message);
+                return false;
+            }
+        }
     }
        
 }

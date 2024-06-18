@@ -37,11 +37,10 @@
                 <WrapPanel>
                     <TextBlock Text="Дата:" TextWrapping="Wrap" FontSize="16"></TextBlock>
                     <DatePickerTextBox x:Name="BoxDate" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Время" Width="auto" FontSize="16"></DatePickerTextBox>
-                    <TextBlock Text="р" TextWrapping="Wrap" FontSize="16"></TextBlock>
                 </WrapPanel>
                 <WrapPanel>
                     <TextBlock TextWrapping="Wrap" FontSize="16"><Run Language="ru-ru" Text="Часы"/><Run Text=":"/></TextBlock>
-                    <TextBox x:Name="BoxTime" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Цена" Width="auto" FontSize="16"></TextBox>
+                    <TextBox x:Name="BoxTime" Style="{DynamicResource TextBoxStyleNullBack}" TextWrapping="Wrap" Tag="Часы" Width="auto" FontSize="16" TextChanged="BoxTime_TextChanged"></TextBox>
                 </WrapPanel>
                 <WrapPanel>
                     <TextBlock Text="Место:" TextWrapping="Wrap" FontSize="16"></TextBlock>
@@ -90,13 +89,21 @@
                 <ImageBrush Stretch="UniformToFill" ImageSource="/image/back.png"/>
             </Label.Background>-->
         </Label>
-        <Button 
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Right"
-            Margin="5"
-            Grid.Row="1"
-            Style="{DynamicResource ButtonAdmin}"
-            x:Name="ButtonDone"
-            Content="Готово  " Width="auto" Height="30" Click="ButtonDone_Click"></Button>
+        <WrapPanel VerticalAlignment="Bottom"
+        HorizontalAlignment="Right"
+        Margin="5"
+        Grid.Row="1">
+            <Button 
+    
+    Style="{DynamicResource ButtonAdmin}"
+    x:Name="ButtonRemove"
+    Content="Удалить  " Visibility="Collapsed" Width="auto" Margin="0 0 20 0" Height="30" Click="ButtonRemove_Click"></Button>
+            <Button 
+    
+    Style="{DynamicResource ButtonAdmin}"
+    x:Name="ButtonDone"
+    Content="Готово  " Width="auto" Height="30" Click="ButtonDone_Click"></Button>
+        </WrapPanel>
+        
     </Grid>
 </Page>

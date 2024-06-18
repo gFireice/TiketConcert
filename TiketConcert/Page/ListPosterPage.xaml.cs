@@ -42,7 +42,6 @@ namespace TiketConcert.Page
             
             try
             {
-                if (AppData.concerts == null || !AppData.concerts.Any())
                     AppData.concerts = await AppData.Context.GetAllConcrt();
                 List<Concert> concerts = AppData.concerts;
                 if (!string.IsNullOrEmpty(Filter.TextFilter))

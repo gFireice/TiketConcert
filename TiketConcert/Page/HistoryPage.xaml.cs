@@ -31,9 +31,8 @@ namespace TiketConcert.Page
 
         public async void LoadHistory()
         {
-            AppData.Orders = await AppData.Context.GetOrderById(TempData.IdUser);
- 
-            var groupedItems = AppData.Orders;
+            var groupedItems = await AppData.Context.GetOrderById(TempData.IdUser);
+            //var groupedItems = AppData.Orders;
             if (!string.IsNullOrEmpty(Filter.TextFilter))
                 groupedItems = groupedItems
                    .Where(c => c.TitleConcert.ToLower().Contains(Filter.TextFilter.ToLower()))

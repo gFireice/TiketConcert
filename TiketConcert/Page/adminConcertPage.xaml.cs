@@ -31,8 +31,7 @@ namespace TiketConcert.Page
         private async void LoadConcertsAsync()
         {
             List<Model.Concert> concerts = new List<Model.Concert>();
-            if (AppData.concerts == null || !AppData.concerts.Any())
-                AppData.concerts = await AppData.Context.GetAllConcrt();
+            AppData.concerts = await AppData.Context.GetAllConcrt();
                  concerts = AppData.concerts;
             if (!string.IsNullOrEmpty(Filter.TextFilter))
                 concerts = AppData.concerts
